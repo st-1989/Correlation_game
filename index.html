@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Correlation Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Correlation Game</h1>
+      <p class="lead">Look at the scatter plot, estimate Pearson r, Spearman ρ, and Kendall τ. Win if each estimate is within the tolerance.</p>
+    </header>
+
+    <section class="controls">
+      <div class="row">
+        <label>
+          Sample size:
+          <input id="sampleSize" type="number" min="10" max="1000" value="50" />
+        </label>
+
+        <label>
+          True Pearson target (randomized around this):
+          <input id="targetR" type="number" step="0.05" min="-0.95" max="0.95" value="0.6" />
+        </label>
+
+        <label>
+          Tolerance:
+          <input id="tolerance" type="number" step="0.01" min="0.01" max="1" value="0.1" />
+        </label>
+
+        <button id="newPlotBtn">New Plot</button>
+      </div>
+    </section>
+
+    <section class="plot-area">
+      <canvas id="scatterChart" width="600" height="400" aria-label="Scatter plot" role="img"></canvas>
+    </section>
+
+    <section class="guess-area">
+      <form id="guessForm" autocomplete="off">
+        <div class="inputs">
+          <label>
+            Pearson r:
+            <input id="pearsonInput" name="pearson" type="number" step="0.001" placeholder="e.g. 0.65" />
+          </label>
+
+          <label>
+            Spearman ρ:
+            <input id="spearmanInput" name="spearman" type="number" step="0.001" placeholder="e.g. 0.60" />
+          </label>
+
+          <label>
+            Kendall τ:
+            <input id="kendallInput" name="kendall" type="number" step="0.001" placeholder="e.g. 0.45" />
+          </label>
+        </div>
+
+        <div class="buttons">
+          <button type="submit" id="submitBtn">Submit Guess</button>
+        </div>
+      </form>
+
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      <small>Built with plain JavaScript and Chart.js — perfect for GitHub Pages.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
