@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -8,18 +9,20 @@
   <!-- Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
+
 <body>
   <main class="container">
     <header>
       <h1>Correlation Game</h1>
-      <p class="lead">Look at the scatter plot, estimate Pearson r, Spearman ρ, and Kendall τ. Win if each estimate is within the tolerance.</p>
+      <p class="lead">Look at the scatter plot, estimate Pearson r, Spearman ρ, and Kendall τ. Win if each estimate is
+        within the tolerance.</p>
     </header>
 
     <section class="controls">
       <div class="row">
         <label>
           Sample size:
-          <input id="sampleSize" type="number" min="10" max="1000" value="50" />
+          <input id="sampleSize" type="number" min="10" max="1000" value="100" />
         </label>
 
         <label>
@@ -74,4 +77,5 @@
 
   <script src="app.js"></script>
 </body>
+
 </html>

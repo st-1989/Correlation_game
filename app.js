@@ -8,7 +8,8 @@
   // Helpers
   function randn() {
     // Box-Muller transform
-    let u = 0, v = 0;
+    let u = 0,
+      v = 0;
     while (u === 0) u = Math.random();
     while (v === 0) v = Math.random();
     return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
@@ -40,10 +41,11 @@
 
   function pearsonr(x, y) {
     const n = x.length;
-    const mx = mean(x), my = mean(y);
+    const mx = mean(x),
+      my = mean(y);
     let cov = 0;
     for (let i = 0; i < n; i++) cov += (x[i] - mx) * (y[i] - my);
-    cov /= (n - 1);
+    cov /= n - 1;
     return cov / (sd(x) * sd(y));
   }
 
@@ -111,7 +113,7 @@
     ys: [],
     pearson: 0,
     spearman: 0,
-    kendall: 0
+    kendall: 0,
   };
 
   function plotScatter(xs, ys) {
@@ -125,22 +127,24 @@
     chart = new Chart(ctx, {
       type: "scatter",
       data: {
-        datasets: [{
-          label: "Data points",
-          data: points,
-          backgroundColor: "rgba(125,211,252,0.9)"
-        }]
+        datasets: [
+          {
+            label: "Data points",
+            data: points,
+            backgroundColor: "rgba(125,211,252,0.9)",
+          },
+        ],
       },
       options: {
         responsive: true,
         plugins: {
-          legend: { display: false }
+          legend: { display: false },
         },
         scales: {
           x: { title: { display: true, text: "x" } },
-          y: { title: { display: true, text: "y" } }
-        }
-      }
+          y: { title: { display: true, text: "y" } },
+        },
+      },
     });
   }
 
@@ -201,7 +205,7 @@
           <li>Spearman guess: ${fmt(gSpearman)} (diff ${fmt(sDiff)}) — ${sPass ? '<span class="feedback-pass">OK</span>' : '<span class="feedback-fail">Wrong</span>'}</li>
           <li>Kendall guess: ${fmt(gKendall)} (diff ${fmt(kDiff)}) — ${kPass ? '<span class="feedback-pass">OK</span>' : '<span class="feedback-fail">Wrong</span>'}</li>
         </ul>
-        <p style="font-weight:700; color:${allPass ? '#7dd3fc' : '#ef4444'}">${allPass ? 'You win! 🎉 All estimates are within tolerance.' : 'Not yet — try another estimate or generate a new plot.'}</p>
+        <p style="font-weight:700; color:${allPass ? "#7dd3fc" : "#ef4444"}">${allPass ? "You win! 🎉 All estimates are within tolerance." : "Not yet — try another estimate or generate a new plot."}</p>
       </div>
     `;
   }
@@ -215,6 +219,9 @@
 
   // Expose functions in console for testing
   window._correlationGame = {
-    pearsonr, spearmanr, kendallTau, generateBivariateNormal
+    pearsonr,
+    spearmanr,
+    kendallTau,
+    generateBivariateNormal,
   };
 })();
